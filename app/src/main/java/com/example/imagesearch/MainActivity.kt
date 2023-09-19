@@ -1,7 +1,7 @@
 package com.example.imagesearch
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.imagesearch.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

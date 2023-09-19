@@ -1,7 +1,6 @@
 package com.example.imagesearch.retrofit
 
 import android.provider.SyncStateContract.Constants
-import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instance
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
