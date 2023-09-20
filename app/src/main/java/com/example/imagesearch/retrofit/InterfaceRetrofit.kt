@@ -1,7 +1,5 @@
 package com.example.imagesearch.retrofit
 
-import android.telecom.Call
-import com.example.imagesearch.ImageModel
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
@@ -14,5 +12,6 @@ interface InterfaceRetrofit {
         @Query("sort") sort: String?,
         @Query("page") page: Int,
         @Query("size") size: Int
-    ): Call<ImageModel?>?
+    )
+//    ): Call<ImageModel?>?
 }
