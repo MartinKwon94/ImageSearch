@@ -1,6 +1,6 @@
 package com.example.imagesearch.retrofit
 
-import com.example.imagesearch.data.Constant.Companion.BASE_URL
+import com.example.imagesearch.data.Constant
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,7 +16,7 @@ object ClientRetrofit {
             val gson = GsonBuilder().setLenient().create()
 
             return Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(Constant.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
         }
