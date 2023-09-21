@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.imagesearch.adapters.SearchAdapter
-import com.example.imagesearch.data.Constant.Companion.AUTH_HEADER
+import com.example.imagesearch.data.Constant
 import com.example.imagesearch.data.ItemSearch
 import com.example.imagesearch.databinding.FragmentSearchBinding
 import com.example.imagesearch.model.ImageModel
@@ -73,7 +73,7 @@ class Search : Fragment() {
 
     private fun fetchImageResults(query: String) {
         val response = apiService.image_search(
-            AUTH_HEADER,
+            Constant.AUTH_HEADER,
             query,
             "recency",
             1,

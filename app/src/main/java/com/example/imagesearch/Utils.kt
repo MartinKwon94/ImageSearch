@@ -1,11 +1,8 @@
 package com.example.imagesearch
 
 import android.content.Context
-import com.example.imagesearch.data.Constant.Companion.PREFS_NAME
-import com.example.imagesearch.data.Constant.Companion.PREF_KEY
-import java.sql.Date
-import java.text.ParseException
-import java.text.SimpleDateFormat
+import com.example.imagesearch.data.Constant.PREFS_NAME
+import com.example.imagesearch.data.Constant.PREF_KEY
 
 object Utils {
 //    fun getDateFromTimestampFormat(
