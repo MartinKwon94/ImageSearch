@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.imagesearch.MainActivity
 import com.example.imagesearch.data.ItemSearch
 import com.example.imagesearch.databinding.ItemImageBinding
 
@@ -37,6 +39,18 @@ class MyBoxAdapter(var mContext: Context) :
         var tv_text: TextView = binding.tvTitle
         var iv_like: ImageView = binding.ivLike
         var tv_date: TextView = binding.tvDate
-    }
+        var cl_item: ConstraintLayout = binding.clItem
 
+        init {
+            iv_like.visibility = View.GONE
+            cl_item.setOnClickListener {
+                val position = adapterPosition
+                (mContext as MainActivity).removeLikedItem(mItems[position])
+                if (position != RecyclerView.NO_POSITION) {
+                    mItems.removeAt(position)
+                    notifyItemRemoved(position)
+                }
+            }
+        }
+    }
 }
