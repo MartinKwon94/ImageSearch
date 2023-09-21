@@ -56,7 +56,7 @@ class Search : Fragment() {
     }
 
     private fun setupListeners() {
-        binding.tvSearch.setOnClickListener {
+        binding.ivIcSearch.setOnClickListener {
             val query = binding.tvSearch.text.toString()
             if (query.isNotEmpty()) {
                 Utils.saveLastSearch(requireContext(), query)
