@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Glide.init
+import com.example.imagesearch.MainActivity
 import com.example.imagesearch.data.ItemSearch
 import com.example.imagesearch.databinding.ItemImageBinding
 
@@ -16,6 +18,10 @@ class SearchAdapter(private val mContext: Context) :
     RecyclerView.Adapter<SearchAdapter.ItemViewHolder>() {
 
     var mItems = ArrayList<ItemSearch>()
+    fun clearItem(){
+        mItems.clear()
+        notifyDataSetChanged()
+    }
 
     override fun getItemCount() = mItems.size
 
@@ -37,42 +43,34 @@ class SearchAdapter(private val mContext: Context) :
 
     }
 
-    inner class ItemViewHolder(binding: ItemImageBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ItemViewHolder(binding: ItemImageBinding) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
+
         var iv_profile: ImageView = binding.ivProfile
         var iv_like: ImageView = binding.ivLike
         var tv_text: TextView = binding.tvTitle
         var tv_date: TextView = binding.tvDate
         var cl_item: ConstraintLayout = binding.clItem
 
-//        init {
-//            iv_like.visibility = View.GONE
-//            iv_profile.setOnClickListener(this)
-//            cl_item.setOnClickListener(this)
-//        }
+        init {
+            iv_like.visibility = View.GONE
+            iv_profile.setOnClickListener(this)
+            cl_item.setOnClickListener(this)
+        }
 
 
-//        override fun onClick(view: View) {
-//            val position = adapterPosition.takeIf { it != RecyclerView.NO_POSITION } ?: return
-//            val item = mItems[position]
-//            item.isLike = !item.isLike
-//            if (item.isLike) {
-//                (mContext as MainActivity).addLikedItem(item)
-//            } else {
-//                (mContext as MainActivity).removeLikedItem(item)
-//            }
-//        }
+        override fun onClick(view: View) {
+            val position = adapterPosition.takeIf { it != RecyclerView.NO_POSITION } ?: return
+            val item = mItems[position]
+            item.isLike = !item.isLike
+            if (item.isLike) {
+                (mContext as MainActivity).addLikedItem(item)
+            } else {
+                (mContext as MainActivity).removeLikedItem(item)
+            }
+            notifyItemChanged(position)
+        }
 
-//        init{
-//            iv_like.visibility = View.GONE
-//            cl_item.setOnClickListener{
-//                val position = adapterPosition
-//                (mContext as MainActivity).removeLikedItem(items[position])
-//                if (position != RecyclerView.NO_POSITION){
-//                    items.removeAt(position)
-//                    notifyItemRemoved(position)
-//                }
-//            }
-//        }
+
     }
 
 }
