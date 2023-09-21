@@ -2,7 +2,6 @@ package com.example.imagesearch
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +38,7 @@ class Search : Fragment() {
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
         setupViews()
-//        setupListeners()
+        setupListeners()
         return binding.root
     }
 
@@ -97,9 +96,7 @@ class Search : Fragment() {
                     adapter.notifyDataSetChanged()
                 }
 
-                override fun onFailure(call: Call<ImageModel?>, t: Throwable) {
-                    Log.d("onFailure", "martin: ${t.message}")
-                }
+                override fun onFailure(call: Call<ImageModel?>, t: Throwable) {}
             })
     }
 
