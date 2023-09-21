@@ -9,7 +9,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-
     private val tabTextList = listOf("Search", "MyBox")
     private val tabIconList = listOf(R.drawable.ic_search, R.drawable.ic_box)
 
@@ -24,6 +23,12 @@ class MainActivity : AppCompatActivity() {
             tab.text=tabTextList[pos]
             tab.setIcon(tabIconList[pos])
         }.attach()
+    }
+
+    fun addLikedItem(item: ItemSearch){
+        if (!likedItems.contains(item)){
+            likedItems.add(item)
+        }
     }
 
 
