@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.Glide.init
 import com.example.imagesearch.MainActivity
 import com.example.imagesearch.data.ItemSearch
 import com.example.imagesearch.databinding.ItemImageBinding
@@ -18,7 +17,7 @@ class SearchAdapter(private val mContext: Context) :
     RecyclerView.Adapter<SearchAdapter.ItemViewHolder>() {
 
     var mItems = ArrayList<ItemSearch>()
-    fun clearItem(){
+    fun clearItem() {
         mItems.clear()
         notifyDataSetChanged()
     }
@@ -43,7 +42,8 @@ class SearchAdapter(private val mContext: Context) :
 
     }
 
-    inner class ItemViewHolder(binding: ItemImageBinding) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
+    inner class ItemViewHolder(binding: ItemImageBinding) : RecyclerView.ViewHolder(binding.root),
+        View.OnClickListener {
 
         var iv_profile: ImageView = binding.ivProfile
         var iv_like: ImageView = binding.ivLike
