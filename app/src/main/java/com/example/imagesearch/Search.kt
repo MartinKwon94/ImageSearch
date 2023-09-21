@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.imagesearch.adapters.SearchAdapter
@@ -54,26 +56,25 @@ class Search : Fragment() {
         binding.tvSearch.setText(lastSearch)
     }
 
-//    private fun setupListeners() {
-//        binding.tvSearch.setOnClickListener {
-//            val query = binding.tvSearch.text.toString()
-//            if (query.isNotEmpty()) {
-//                Utils.saveLastSearch(requireContext(), query)
-////                adapter.clearItem()
-//                fetchImageResults(query)
-//            } else {
-//                Toast.makeText(mContext, "키워드를 입력해주세요.", Toast.LENGTH_SHORT).show()
-//            }
-//            val imm =
-//                requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//            imm.hideSoftInputFromWindow(binding.tvSearch.windowToken, 0) //키보드 내리기
-//        }
-//    }
+    private fun setupListeners() {
+        binding.tvSearch.setOnClickListener {
+            val query = binding.tvSearch.text.toString()
+            if (query.isNotEmpty()) {
+                Utils.saveLastSearch(requireContext(), query)
+                adapter.clearItem()
+                fetchImageResults(query)
+            } else {
+                Toast.makeText(mContext, "키워드를 입력해주세요.", Toast.LENGTH_SHORT).show()
+            }
+            val imm =
+                requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(binding.tvSearch.windowToken, 0) //키보드 내리기
+        }
+    }
 
     private fun fetchImageResults(query: String) {
         val response = apiService.image_search(
             AUTH_HEADER,
-//            apiKey = SyncStateContract.Constants.AUTH_HEADER,
             query,
             "recency",
             1,
