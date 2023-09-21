@@ -19,19 +19,19 @@ class MainActivity : AppCompatActivity() {
 
         binding.viewPager.adapter = MainViewPagerAdapter(this)
 
-        TabLayoutMediator(binding.tapLayout, binding.viewPager){tab,pos ->
-            tab.text=tabTextList[pos]
+        TabLayoutMediator(binding.tapLayout, binding.viewPager) { tab, pos ->
+            tab.text = tabTextList[pos]
             tab.setIcon(tabIconList[pos])
         }.attach()
     }
 
-    fun addLikedItem(item: ItemSearch){
-        if (!likedItems.contains(item)){
+    fun addLikedItem(item: ItemSearch) {
+        if (!likedItems.contains(item)) {
             likedItems.add(item)
         }
     }
 
-
-
-
+    fun removeLikedItem(item: ItemSearch) {
+        likedItems.remove(item)
+    }
 }
