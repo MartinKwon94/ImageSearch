@@ -51,7 +51,7 @@ class Search : Fragment() {
         binding.recyclerView1.adapter = adapter
         binding.recyclerView1.itemAnimator = null //깜빡임 방지
 
-        val lastSearch = Utils.getLastSearch(requireContext())
+        val lastSearch = getLastSearch(requireContext())
         binding.tvSearch.setText(lastSearch)
     }
 
@@ -59,7 +59,7 @@ class Search : Fragment() {
         binding.ivIcSearch.setOnClickListener {
             val query = binding.tvSearch.text.toString()
             if (query.isNotEmpty()) {
-                Utils.saveLastSearch(requireContext(), query)
+                saveLastSearch(requireContext(), query)
                 adapter.clearItem()
                 fetchImageResults(query)
             } else {
@@ -98,6 +98,15 @@ class Search : Fragment() {
 
                 override fun onFailure(call: Call<ImageModel?>, t: Throwable) {}
             })
+    }
+    fun saveLastSearch(context: Context, query: String) {
+        val prefs = context.getSharedPreferences(Constant.PREFS_NAME, Context.MODE_PRIVATE)
+        prefs.edit().putString(Constant.PREF_KEY, query).apply()
+    }
+
+    fun getLastSearch(context: Context): String? {
+        val prefs = context.getSharedPreferences(Constant.PREFS_NAME, Context.MODE_PRIVATE)
+        return prefs.getString(Constant.PREF_KEY, null)
     }
 
     override fun onDestroyView() {
