@@ -9,6 +9,9 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.load.resource.bitmap.FitCenter
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.imagesearch.MainActivity
 import com.example.imagesearch.data.ItemSearch
 import com.example.imagesearch.databinding.ItemImageBinding
@@ -34,7 +37,7 @@ class SearchAdapter(private val mContext: Context) :
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val currentItem = mItems[position]
-        Glide.with(mContext).load(currentItem.url).into(holder.iv_profile)
+        Glide.with(mContext).load(currentItem.url).transform(MultiTransformation(FitCenter(),RoundedCorners(8))).into(holder.iv_profile)
 
         holder.iv_like.visibility = if (currentItem.isLike) View.VISIBLE else View.INVISIBLE
         holder.tv_text.text = mItems[position].title
