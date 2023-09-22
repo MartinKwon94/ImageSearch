@@ -13,11 +13,11 @@ data class ImageModel(
         @SerializedName("collection")
         val collection: String,
 
-        @SerializedName("thumbnail_uri")
-        val thumbnailUri: String,
+        @SerializedName("thumbnail_url")
+        val thumbnailUrl: String,
 
-        @SerializedName("image_uri")
-        val imageUri: String,
+        @SerializedName("image_url")
+        val imageUrl: String,
 
         @SerializedName("width")
         val width: Int,
