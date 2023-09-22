@@ -2,6 +2,7 @@ package com.example.imagesearch
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +15,10 @@ import com.example.imagesearch.databinding.FragmentMyBoxBinding
 
 class MyBox : Fragment() {
 
-    lateinit var binding: FragmentMyBoxBinding
     private var _binding: FragmentMyBoxBinding? = null
     private lateinit var mContext: Context
     private lateinit var adapter: MyBoxAdapter
-    private var likedItems: List<ItemSearch> = listOf()
+    private var heartItems: List<ItemSearch> = listOf()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -29,15 +29,25 @@ class MyBox : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val mainActivity = activity as MainActivity
+        heartItems = mainActivity.likedItems
+        Log.d("liked", "${heartItems.size}")
+
         adapter = MyBoxAdapter(mContext).apply {
-            mItems = likedItems.toMutableList()
+            mItems = heartItems.toMutableList()
         }
-        binding = FragmentMyBoxBinding.inflate(inflater, container, false).apply {
+        _binding = FragmentMyBoxBinding.inflate(inflater, container, false).apply {
             recyclerView2.layoutManager =
                 StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             recyclerView2.adapter = adapter
         }
-        return binding?.root
+        return _binding?.root
+    }
+    fun selected(){
+        if (::adapter.isInitialized){
+        adapter.mItems = (activity as MainActivity).likedItems
+        adapter.notifyDataSetChanged()
+        }
     }
 
     override fun onDestroyView() {

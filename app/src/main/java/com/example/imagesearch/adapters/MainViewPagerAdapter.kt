@@ -8,13 +8,16 @@ import com.example.imagesearch.Search
 
 class MainViewPagerAdapter(fragmentManager: FragmentActivity) :
     FragmentStateAdapter(fragmentManager) {
-
+    private val search = Search()
+    private val myBox = MyBox()
     override fun getItemCount(): Int = 2
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> Search()
-            else -> MyBox()
+            0 -> search
+            else -> myBox
         }
     }
+    fun getSearchFragment() = search
+    fun getMyBoxFragment() = myBox
 }

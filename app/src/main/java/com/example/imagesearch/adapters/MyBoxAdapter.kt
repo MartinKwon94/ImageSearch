@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.imagesearch.MainActivity
 import com.example.imagesearch.data.ItemSearch
 import com.example.imagesearch.databinding.ItemImageBinding
 
@@ -18,7 +17,6 @@ class MyBoxAdapter(var mContext: Context) :
 
     var mItems = mutableListOf<ItemSearch>()
 
-    override fun getItemCount() = mItems.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val binding = ItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -34,6 +32,10 @@ class MyBoxAdapter(var mContext: Context) :
 
     }
 
+    override fun getItemCount(): Int {
+        return mItems.size
+    }
+
     inner class ItemViewHolder(binding: ItemImageBinding) : RecyclerView.ViewHolder(binding.root) {
         var iv_profile: ImageView = binding.ivProfile
         var tv_text: TextView = binding.tvTitle
@@ -45,7 +47,6 @@ class MyBoxAdapter(var mContext: Context) :
             iv_like.visibility = View.GONE
             cl_item.setOnClickListener {
                 val position = adapterPosition
-                (mContext as MainActivity).removeLikedItem(mItems[position])
                 if (position != RecyclerView.NO_POSITION) {
                     mItems.removeAt(position)
                     notifyItemRemoved(position)
