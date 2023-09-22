@@ -28,7 +28,7 @@
             android:hint="  키워드를 입력해주세요."
             android:inputType="text"
             android:textAlignment="center"
-            android:textColor="#808080"
+            android:textColor="#FFFFFF"
             android:textColorHint="#D1D1D1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/iv_ic_search"
