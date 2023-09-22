@@ -1,5 +1,7 @@
 package com.example.imagesearch.retrofit
 
+import com.example.imagesearch.model.ImageModel
+import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
@@ -12,6 +14,5 @@ interface InterfaceRetrofit {
         @Query("sort") sort: String?,
         @Query("page") page: Int,
         @Query("size") size: Int
-    )
-//    ): Call<ImageModel?>?
+    ): Call<ImageModel?>?
 }
