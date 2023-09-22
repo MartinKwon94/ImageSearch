@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             tab.text = tabTextList[pos]
             tab.setIcon(tabIconList[pos])
         }.attach()
-        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 adapter.getMyBoxFragment().selected()

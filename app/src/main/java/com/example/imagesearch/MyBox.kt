@@ -43,10 +43,11 @@ class MyBox : Fragment() {
         }
         return _binding?.root
     }
-    fun selected(){
-        if (::adapter.isInitialized){
-        adapter.mItems = (activity as MainActivity).likedItems
-        adapter.notifyDataSetChanged()
+
+    fun selected() {
+        if (::adapter.isInitialized) {
+            adapter.mItems = (activity as MainActivity).likedItems
+            adapter.notifyDataSetChanged()
         }
     }
 

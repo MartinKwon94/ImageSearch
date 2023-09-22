@@ -10,6 +10,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.imagesearch.Utils.getLastSearch
+import com.example.imagesearch.Utils.saveLastSearch
 import com.example.imagesearch.adapters.SearchAdapter
 import com.example.imagesearch.data.Constant
 import com.example.imagesearch.data.ItemSearch
@@ -89,7 +91,7 @@ class Search : Fragment() {
                                 val title = document.displaySitename
                                 val dateTime = document.datetime
                                 val url = document.thumbnailUrl
-                                Log.d("title","${title}")
+                                Log.d("title", "${title}")
                                 resItems.add(ItemSearch(title, dateTime, url))
 
                             }
@@ -101,15 +103,6 @@ class Search : Fragment() {
 
                 override fun onFailure(call: Call<ImageModel?>, t: Throwable) {}
             })
-    }
-    fun saveLastSearch(context: Context, query: String) {
-        val prefs = context.getSharedPreferences(Constant.PREFS_NAME, Context.MODE_PRIVATE)
-        prefs.edit().putString(Constant.PREF_KEY, query).apply()
-    }
-
-    fun getLastSearch(context: Context): String? {
-        val prefs = context.getSharedPreferences(Constant.PREFS_NAME, Context.MODE_PRIVATE)
-        return prefs.getString(Constant.PREF_KEY, null)
     }
 
     override fun onDestroyView() {

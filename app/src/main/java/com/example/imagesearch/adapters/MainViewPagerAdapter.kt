@@ -18,6 +18,7 @@ class MainViewPagerAdapter(fragmentManager: FragmentActivity) :
             else -> myBox
         }
     }
+
     fun getSearchFragment() = search
     fun getMyBoxFragment() = myBox
 }
