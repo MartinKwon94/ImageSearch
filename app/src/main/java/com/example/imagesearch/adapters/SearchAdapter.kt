@@ -37,7 +37,8 @@ class SearchAdapter(private val mContext: Context) :
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val currentItem = mItems[position]
-        Glide.with(mContext).load(currentItem.url).transform(MultiTransformation(FitCenter(),RoundedCorners(8))).into(holder.iv_profile)
+        Glide.with(mContext).load(currentItem.url)
+            .transform(MultiTransformation(FitCenter(), RoundedCorners(8))).into(holder.iv_profile)
 
         holder.iv_like.visibility = if (currentItem.isLike) View.VISIBLE else View.INVISIBLE
         holder.tv_text.text = mItems[position].title

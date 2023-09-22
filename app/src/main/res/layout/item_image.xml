@@ -28,16 +28,23 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
             android:text="[Image] 블로그 제목"
-            android:textColor="@color/black" />
+
+            android:textColor="#6750A4"
+            android:textSize="16dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="2023-09-19"
-            android:textColor="@color/black" />
+            android:textColor="#BCA7F2" />
     </LinearLayout>
 
     <ImageView
@@ -54,8 +61,8 @@
 
     <ImageView
         android:id="@+id/iv_like"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
