@@ -2,6 +2,7 @@ package com.example.imagesearch
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +21,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class Search : Fragment() {
-    lateinit var binding: FragmentSearchBinding
+    private lateinit var binding: FragmentSearchBinding
     private var _binding: FragmentSearchBinding? = null
     private lateinit var mContext: Context
     private lateinit var adapter: SearchAdapter
@@ -87,8 +88,10 @@ class Search : Fragment() {
                             response.body()!!.document.forEach { document ->
                                 val title = document.displaySitename
                                 val dateTime = document.datetime
-                                val url = document.thumbnailUri
+                                val url = document.thumbnailUrl
+                                Log.d("title","${title}")
                                 resItems.add(ItemSearch(title, dateTime, url))
+
                             }
                         }
                     }
